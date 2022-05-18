@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:market_sentiment/airline_resultScreen.dart';
+import 'package:market_sentiment/bankresultScreen.dart';
+import 'package:market_sentiment/smartphoone_resultScreen.dart';
 import 'resultScreen.dart';
 
 class searchScreen extends StatefulWidget {
@@ -14,8 +17,6 @@ class _searchScreenState extends State<searchScreen> {
     const choice("Airlines", Icons.airplane_ticket_outlined),
     const choice("Smart Phones", Icons.mobile_screen_share),
     const choice("Banking Services", Icons.money),
-    const choice("Taxi Services", Icons.taxi_alert_outlined),
-    const choice("Search", Icons.search),
   ];
   @override
   Widget build(BuildContext context) {
@@ -92,8 +93,21 @@ class _searchScreenState extends State<searchScreen> {
     return InkWell(
       onTap: () {
         print(Choice.title);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => resultScreen()));
+        if (Choice.title == "Online food Services") {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => resultScreen()));
+        } else if (Choice.title == "Airlines") {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AirlineresultScreen()));
+        } else if (Choice.title == "Smart Phones") {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SmartPhoneresultScreen()));
+        } else if (Choice.title == "Banking Services") {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => BankresultScreen()));
+        }
       },
       child: Container(
           height: 20,
